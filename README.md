@@ -1,105 +1,129 @@
-# TP5 – Data Normalisation and Class Balancing
+# TP N°5 – Normalisation and Balancing
 
 ##  Project Overview
 
-This project focuses on two important data preprocessing techniques in Machine Learning:
+This project focuses on two important data preprocessing techniques in Machine Learning: **data scaling** and **class balancing**.
 
-- **Normalisation and Standardisation**
-- **Class Balancing (Oversampling and Undersampling)**
+Using the Titanic dataset, I applied different techniques to understand how data can be prepared before training a Machine Learning model.
 
-The Titanic dataset is used to apply these techniques and understand how they improve data preparation.
+##  Objectives
 
-##  Dataset
+- Understand the difference between normalisation and standardisation.
+- Apply Min-Max Scaling and Z-score Standardisation.
+- Understand class imbalance.
+- Apply Random Undersampling, Random Oversampling, and SMOTE.
+- Compare the results using visualisations.
 
-The project uses the Titanic dataset from GitHub.
-
-- **Dataset:** Titanic
-- **Target variable:** `Survived`
-- `0` = Did not survive
-- `1` = Survived
-
-##  Technologies and Libraries
+##  Tools and Libraries
 
 - Python
 - Pandas
 - Matplotlib
 - Scikit-learn
 - Imbalanced-learn
-- Google Colab / Jupyter Notebook
+- Jupyter Notebook / Google Colab
 
-##  Part 1: Normalisation and Standardisation
+##  Dataset
 
-Two scaling techniques are applied to the `Age` and `Fare` features.
+The project uses the Titanic dataset.
 
-### 1. Min-Max Normalisation
+**Source:** [Titanic Dataset – GitHub](https://github.com/datasciencedojo/datasets/blob/master/titanic.csv)
 
-Transforms values into a range between 0 and 1.
+The target variable is `Survived`:
 
-### 2. Z-score Standardisation
+- `0` – Non-survivors
+- `1` – Survivors
 
-Transforms values so that the mean is approximately 0 and the standard deviation is 1.
+## 1. Data Normalisation and Standardisation
 
-**Visualisations:**
+In this part, I worked with the `Age` and `Fare` columns.
 
-![Normalisation and Standardisation](images/normalisation.png)
+### Min-Max Normalisation
 
-##  Part 2: Class Balancing
+This technique transforms values into a range between 0 and 1.
 
-The Titanic dataset contains an imbalance between survivors and non-survivors.
+### Z-score Standardisation
 
-Three techniques are applied:
+This technique transforms values so that their mean is approximately 0 and their standard deviation is 1.
 
-### 1. Random Undersampling
-Reduces the number of examples in the majority class.
+Missing values were replaced with the median before applying the transformations.
 
-![Random Undersampling](images/undersampling.png)
+**Results:**
 
-### 2. Random Oversampling
-Duplicates examples from the minority class.
+![Normalisation and Standardisation](images/normalisation-standardisation.jpeg)
 
-![Random Oversampling](images/oversampling.png)
+## 2. Class Balancing
 
-### 3. SMOTE
-Creates synthetic examples for the minority class.
+The original dataset contains more non-survivors than survivors. This creates an imbalance between the two classes.
 
-![SMOTE](images/smote.png)
+### Original Distribution
 
-##  Results
-
-Before balancing:
 - Non-survivors: 549
 - Survivors: 342
 
-After Random Undersampling:
+![Original Class Distribution](images/before-balancing.jpeg)
+
+### Random Undersampling
+
+This method reduces the majority class by randomly removing some examples.
+
+After undersampling:
 - Non-survivors: 342
 - Survivors: 342
 
-After Random Oversampling:
+![Random Undersampling](images/undersampling.jpeg)
+
+### Random Oversampling
+
+This method increases the minority class by randomly duplicating existing examples.
+
+After oversampling:
 - Non-survivors: 549
 - Survivors: 549
+
+![Random Oversampling](images/oversampling.jpeg)
+
+### SMOTE
+
+SMOTE creates new synthetic examples for the minority class using neighbouring observations.
 
 After SMOTE:
 - Non-survivors: 549
 - Survivors: 549
 
-##  Conclusion
+![SMOTE](images/smote.jpeg)
 
-This project helped me understand the importance of data preprocessing in Machine Learning.
+## 3. Results Comparison
 
-Normalisation and standardisation help put numerical features on comparable scales, while balancing techniques help deal with imbalanced datasets.
+| Method | Non-survivors (0) | Survivors (1) |
+|---|---:|---:|
+| Before balancing | 549 | 342 |
+| Random Undersampling | 342 | 342 |
+| Random Oversampling | 549 | 549 |
+| SMOTE | 549 | 549 |
 
-Each balancing technique has advantages and disadvantages, so choosing the right one depends on the dataset and the problem.
+## 4. Conclusion
+
+Through this practical work, I learned how to prepare data using normalisation and standardisation.
+
+I also learned how to handle imbalanced datasets using different techniques.
+
+Random Undersampling removes examples from the majority class, Random Oversampling duplicates examples from the minority class, while SMOTE creates synthetic examples.
+
+These techniques are important because good data preparation can help improve Machine Learning models.
 
 ##  Project Structure
 
 ```text
-TP5-Normalisation-Balancing/
+normalisation-et-balancing/
 │
 ├── images/
-│   ├── normalisation.png
-│   ├── undersampling.png
-│   ├── oversampling.png
-│   └── smote.png
+│   ├── normalisation-standardisation.jpeg
+│   ├── balancing-comparison.jpeg
+│   ├── before-balancing.jpeg
+│   ├── undersampling.jpeg
+│   ├── oversampling.jpeg
+│   └── smote.jpeg
 │
 ├── TP5_Normalisation_Balancing.ipynb
 └── README.md
@@ -107,5 +131,4 @@ TP5-Normalisation-Balancing/
 
 ##  Author
 
-Created as part of a Data Mining course practical assignment.# normalisation-et-balancing
- Normalisation, standardisation et rééquilibrage des classes sur le dataset Titanic avec Python (Google Colab). Application de Min-Max Scaling, Z-score, Undersampling, Oversampling et SMOTE.
+Created as part of a Data Mining practical assignment.
