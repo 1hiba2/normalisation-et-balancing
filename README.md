@@ -48,9 +48,7 @@ This technique transforms values so that their mean is approximately 0 and their
 
 Missing values were replaced with the median before applying the transformations.
 
-**Results:**
 
-![Normalisation and Standardisation](images/normalisation-standardisation.jpeg)
 
 ## 2. Class Balancing
 
